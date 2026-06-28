@@ -140,95 +140,6 @@ body {
     padding-inline: 1rem;
   }
 
-  .hero-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 0.625rem;
-  }
-
-  .hero-actions__primary {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.5rem;
-  }
-
-  .hero-actions__primary .hero-link {
-    width: 100%;
-  }
-
-  .hero-actions__socials {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0.5rem;
-  }
-
-  .hero-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    min-width: 0;
-    min-height: 2.75rem;
-    cursor: pointer;
-    padding: 0.625rem 0.875rem;
-    border: 1px solid var(--border);
-    background: var(--background);
-    color: var(--foreground);
-    font-family: var(--font-mono);
-    font-size: 0.8125rem;
-    font-weight: 500;
-    line-height: 1.4;
-    text-decoration: none;
-    transition:
-      border-color 0.15s ease,
-      color 0.15s ease,
-      background-color 0.15s ease;
-  }
-
-  .hero-link:hover {
-    border-color: var(--foreground);
-  }
-
-  .hero-link--primary {
-    border-color: var(--foreground);
-    background: var(--foreground);
-    color: var(--background);
-  }
-
-  .hero-link--primary:hover {
-    background: var(--background);
-    color: var(--foreground);
-  }
-
-  .hero-link--social {
-    color: var(--muted);
-    font-size: 0.75rem;
-    padding-inline: 0.5rem;
-  }
-
-  .hero-link--social .hero-link__icon {
-    display: none;
-  }
-
-  .hero-link--social:hover {
-    color: var(--foreground);
-    border-color: var(--foreground);
-  }
-
-  .hero-link__icon {
-    opacity: 0.7;
-    transition: opacity 0.15s ease;
-  }
-
-  .hero-link--social:hover .hero-link__icon {
-    opacity: 1;
-    color: var(--terminal-green);
-  }
-
-  .hero-quote {
-    max-width: 36rem;
-  }
-
   .tag-pill {
     display: inline-flex;
     align-items: center;
@@ -341,42 +252,6 @@ body {
     padding-inline: 1.5rem;
   }
 
-  .hero-actions {
-    flex-flow: row wrap;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .hero-actions__primary {
-    display: flex;
-    gap: 0.75rem;
-  }
-
-  .hero-actions__primary .hero-link {
-    width: auto;
-  }
-
-  .hero-actions__socials {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .hero-link {
-    min-height: auto;
-    font-size: 0.875rem;
-    padding: 0.5rem 1rem;
-  }
-
-  .hero-link--social {
-    font-size: 0.875rem;
-    padding: 0.5rem 1rem;
-  }
-
-  .hero-link--social .hero-link__icon {
-    display: block;
-  }
-
   .contact-direct-grid {
     display: flex;
     flex-direction: column;
@@ -413,11 +288,6 @@ body {
 
   .page-section {
     padding-block: 2.5rem;
-  }
-
-  .hero-quote {
-    font-size: 0.8125rem;
-    line-height: 1.6;
   }
 
   .contact-textarea {

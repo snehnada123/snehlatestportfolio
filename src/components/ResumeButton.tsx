@@ -2,7 +2,8 @@ import { Download } from 'lucide-react'
 import { useState } from 'react'
 import { site } from '../data/site'
 
-const linkClass = 'hero-link hero-link--primary'
+const linkClass =
+  'inline-flex items-center gap-2 text-mono text-small font-medium text-foreground underline underline-offset-4 decoration-1 hover:text-terminal transition-colors'
 
 export function ResumeButton() {
   const [notice, setNotice] = useState<string | null>(null)
@@ -11,7 +12,7 @@ export function ResumeButton() {
     return (
       <a href={site.resume.path} download className={linkClass}>
         <Download className="h-4 w-4" aria-hidden="true" />
-        Resume
+        Download resume
       </a>
     )
   }
@@ -22,10 +23,10 @@ export function ResumeButton() {
   }
 
   return (
-    <span className="flex w-full min-w-0 flex-col gap-1">
+    <span className="inline-flex flex-col gap-1">
       <button type="button" onClick={handleClick} className={linkClass}>
         <Download className="h-4 w-4" aria-hidden="true" />
-        Resume
+        Download resume
       </button>
       {notice && (
         <span className="text-mono text-caption text-muted" role="status" aria-live="polite">

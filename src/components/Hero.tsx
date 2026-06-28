@@ -6,11 +6,8 @@ import { ResumeButton } from './ResumeButton'
 import { TimeOnEarth } from './TimeOnEarth'
 import { NameTypeWriter, QuoteTypeWriter, SimpleTypeWriter } from './TypeWriter'
 
-const socialLinks = [
-  { label: 'GitHub', href: site.links.github },
-  { label: 'LinkedIn', href: site.links.linkedin },
-  { label: 'X', href: site.links.x },
-] as const
+const socialLinkClass =
+  'text-mono text-small text-muted transition-colors hover:text-foreground'
 
 export function Hero() {
   const [nameDone, setNameDone] = useState(false)
@@ -37,38 +34,49 @@ export function Hero() {
         </p>
 
         <div className="flex flex-col gap-4 sm:gap-5">
-          <div className="hero-actions">
-            <div className="hero-actions__primary">
-              <a
-                href="#contact"
-                className="hero-link hero-link--primary"
-              >
-                {site.home.exploreLabel}
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </a>
-              <ResumeButton />
-            </div>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 text-mono text-small font-medium text-foreground underline underline-offset-4 decoration-1 hover:text-terminal transition-colors"
+            >
+              {site.home.exploreLabel}
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </a>
 
-            <div className="hero-actions__socials" aria-label="Social links">
-              {socialLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hero-link hero-link--social"
-                >
-                  <ExternalLink
-                    className="hero-link__icon h-4 w-4 shrink-0"
-                    aria-hidden="true"
-                  />
-                  {link.label}
-                </a>
-              ))}
-            </div>
+            <ResumeButton />
+
+            <a
+              href={site.links.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${socialLinkClass} inline-flex items-center gap-2 font-medium text-foreground underline underline-offset-4 decoration-1 hover:text-terminal`}
+            >
+              <ExternalLink className="h-4 w-4" aria-hidden="true" />
+              GitHub
+            </a>
+
+            <a
+              href={site.links.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${socialLinkClass} inline-flex items-center gap-2 font-medium text-foreground underline underline-offset-4 decoration-1 hover:text-terminal`}
+            >
+              <ExternalLink className="h-4 w-4" aria-hidden="true" />
+              LinkedIn
+            </a>
+
+            <a
+              href={site.links.x}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${socialLinkClass} inline-flex items-center gap-2 font-medium text-foreground underline underline-offset-4 decoration-1 hover:text-terminal`}
+            >
+              <ExternalLink className="h-4 w-4" aria-hidden="true" />
+              X
+            </a>
           </div>
 
-          <p className="hero-quote text-mono text-small leading-relaxed text-muted">
+          <p className="max-w-xl min-h-[3.25rem] sm:min-h-[4.5rem] text-mono text-small leading-relaxed text-muted">
             <span className="text-terminal" aria-hidden="true">
               //
             </span>{' '}
