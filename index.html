@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="Sneh Nada — backend & AI engineer. Building APIs, RAG systems, and open-source projects from Anand, India."
+    />
+
+    <title>Home — Sneh Nada - Portfolio</title>
+    <script>
+      (function () {
+        var stored = localStorage.getItem('theme')
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+        var theme = stored === 'light' || stored === 'dark' ? stored : prefersDark ? 'dark' : 'light'
+        document.documentElement.classList.add(theme)
+        document.documentElement.style.colorScheme = theme
+      })()
+    </script>
+  </head>
+  <body class="min-h-full flex flex-col">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

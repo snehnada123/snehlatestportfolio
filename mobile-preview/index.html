@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mobile Preview — Sneh Portfolio</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: "Segoe UI", system-ui, sans-serif;
+        background: #111;
+        color: #fafafa;
+      }
+
+      body {
+        margin: 0;
+        padding: 2rem 1rem 3rem;
+      }
+
+      h1 {
+        margin: 0 0 0.5rem;
+        font-size: 1.25rem;
+        font-weight: 600;
+      }
+
+      p {
+        margin: 0 0 1.5rem;
+        color: #a3a3a3;
+        line-height: 1.5;
+      }
+
+      .grid {
+        display: grid;
+        gap: 1.5rem;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      figure {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      figcaption {
+        font-size: 0.875rem;
+        color: #d4d4d4;
+      }
+
+      .phone {
+        width: min(428px, 100%);
+        border: 1px solid #333;
+        border-radius: 28px;
+        overflow: hidden;
+        background: #0a0a0a;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+      }
+
+      .phone img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .live {
+        margin-top: 2rem;
+        padding: 1rem 1.25rem;
+        border: 1px solid #333;
+        border-radius: 12px;
+        max-width: 1100px;
+        margin-inline: auto;
+      }
+
+      .live a {
+        color: #a78bfa;
+      }
+
+      iframe {
+        display: block;
+        width: 428px;
+        max-width: 100%;
+        height: 926px;
+        border: 1px solid #333;
+        border-radius: 28px;
+        background: #0a0a0a;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid">
+      <div>
+        <h1>Mobile preview — iPhone 13 Pro Max (428×926)</h1>
+        <p>Static captures from your local site. Scroll the live frame below to interact.</p>
+      </div>
+
+      <figure>
+        <figcaption>Hero</figcaption>
+        <div class="phone"><img src="./01-hero.png" alt="Mobile hero preview" /></div>
+      </figure>
+
+      <figure>
+        <figcaption>Projects</figcaption>
+        <div class="phone"><img src="./02-projects.png" alt="Mobile projects preview" /></div>
+      </figure>
+
+      <figure>
+        <figcaption>Contact</figcaption>
+        <div class="phone"><img src="./03-contact.png" alt="Mobile contact preview" /></div>
+      </figure>
+
+      <figure>
+        <figcaption>Menu open</figcaption>
+        <div class="phone"><img src="./04-menu-open.png" alt="Mobile menu preview" /></div>
+      </figure>
+    </div>
+
+    <div class="live">
+      <h1>Live mobile frame</h1>
+      <p>
+        Interactive preview of <a href="http://localhost:5173/" target="_blank" rel="noreferrer">http://localhost:5173/</a>
+      </p>
+      <iframe src="http://localhost:5173/" title="Live mobile portfolio preview"></iframe>
+    </div>
+  </body>
+</html>
