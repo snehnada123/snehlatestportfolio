@@ -31,12 +31,9 @@ export function Experience() {
 
               <p className="text-body text-muted max-w-3xl">{entry.description}</p>
 
-              <ul className="flex flex-wrap gap-2" aria-label="Technologies">
+              <ul className="hidden flex-wrap gap-2 sm:flex" aria-label="Technologies">
                 {entry.tags.map((tag) => (
-                  <li
-                    key={tag}
-                    className="text-mono text-caption border border-border px-2 py-0.5 text-muted"
-                  >
+                  <li key={tag} className="tag-pill">
                     {tag}
                   </li>
                 ))}

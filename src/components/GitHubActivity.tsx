@@ -54,7 +54,7 @@ export function GitHubActivity() {
           </a>
         </div>
 
-        <div className="border border-border p-4 sm:p-6">
+        <div className="border border-border p-3 sm:p-6">
           {loading && (
             <p className="text-mono text-caption text-muted">Loading contribution graph...</p>
           )}
@@ -80,7 +80,7 @@ export function GitHubActivity() {
                   </div>
 
                   <div className="github-heatmap__body">
-                    <div className="github-heatmap__weekdays" aria-hidden="true">
+                    <div className="github-heatmap__weekdays hidden sm:grid" aria-hidden="true">
                       {Array.from({ length: 7 }).map((_, row) => {
                         const label = WEEKDAY_LABELS.find((item) => item.row === row)
                         return (
@@ -130,20 +130,25 @@ export function GitHubActivity() {
                 </div>
               </div>
 
-              <div className="mt-5 flex flex-wrap items-center justify-between gap-4">
+              <div className="mt-4 flex flex-wrap items-center justify-between gap-3 sm:mt-5 sm:gap-4">
                 <p className="text-mono text-caption text-muted">
-                  <span className="text-foreground">{total}</span> contributions in the last year
+                  <span className="text-foreground">{total}</span>
+                  <span className="sm:hidden"> contributions</span>
+                  <span className="hidden sm:inline"> contributions in the last year</span>
                 </p>
 
-                <div className="flex items-center gap-2 text-mono text-caption text-muted">
-                  <span>Less</span>
+                <div
+                  className="flex items-center gap-1.5 text-mono text-caption text-muted sm:gap-2"
+                  aria-label="Contribution intensity scale from less to more"
+                >
+                  <span className="hidden sm:inline">Less</span>
                   {[0, 1, 2, 3, 4].map((level) => (
                     <span
                       key={level}
                       className={`github-heatmap__cell github-heatmap__cell--level-${level}`}
                     />
                   ))}
-                  <span>More</span>
+                  <span className="hidden sm:inline">More</span>
                 </div>
               </div>
             </>

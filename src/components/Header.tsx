@@ -2,19 +2,23 @@ import { site } from '../data/site'
 import { ThemeToggle } from './ThemeToggle'
 
 const navClass =
-  'px-2 py-1 transition-colors text-muted hover:text-foreground'
+  'nav-link px-3 py-2 transition-colors text-muted hover:text-foreground'
+
+const navItems = [...site.nav, ...site.navMore]
+
+function closeMobileMenu() {
+  const menu = document.getElementById('mobile-nav')
+  if (menu instanceof HTMLDetailsElement) menu.open = false
+}
 
 export function Header() {
   return (
     <>
-      <a
-        href="#main"
-        className="sr-only focus:not-sr-only text-mono text-small"
-      >
+      <a href="#main" className="sr-only focus:not-sr-only text-mono text-small">
         Skip to content
       </a>
 
-      <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/70">
+      <header className="site-header sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/75">
         <div className="mx-auto max-w-6xl px-4 py-3 sm:px-6 sm:py-4">
           <div className="flex items-center justify-between gap-3">
             <a
@@ -28,11 +32,11 @@ export function Header() {
               {site.shortName}
             </a>
 
-            <div className="flex items-center gap-3 sm:gap-3">
+            <div className="flex items-center gap-2 sm:gap-3">
               <ThemeToggle />
 
               <nav aria-label="Primary" className="hidden md:block">
-                <ul className="flex items-center gap-2 whitespace-nowrap">
+                <ul className="flex items-center gap-0.5 whitespace-nowrap">
                   {site.nav.map((item) => (
                     <li key={item.href}>
                       <a href={item.href} className={navClass}>
@@ -42,10 +46,12 @@ export function Header() {
                   ))}
                   <li>
                     <details className="group relative">
-                      <summary className={`${navClass} cursor-pointer list-none transition-colors group-open:text-foreground`}>
+                      <summary
+                        className={`${navClass} cursor-pointer list-none transition-colors group-open:text-foreground`}
+                      >
                         MORE
                       </summary>
-                      <ul className="absolute right-0 top-full z-50 mt-2 min-w-40 border border-border bg-background p-1">
+                      <ul className="nav-dropdown absolute right-0 top-full z-50 mt-2 min-w-40 p-1">
                         {site.navMore.map((item) => (
                           <li key={item.href}>
                             <a href={item.href} className={`block w-full ${navClass}`}>
@@ -59,18 +65,22 @@ export function Header() {
                 </ul>
               </nav>
 
-              <details className="group relative md:hidden">
-                <summary className="flex cursor-pointer list-none items-center justify-center border border-border px-3 py-1.5 text-mono text-caption text-muted transition-colors hover:text-foreground group-open:border-foreground group-open:text-foreground">
+              <details id="mobile-nav" className="group relative md:hidden">
+                <summary className="mobile-menu-btn">
                   Menu
                 </summary>
                 <nav
                   aria-label="Primary"
-                  className="absolute right-0 top-full z-50 mt-2 min-w-48 border border-border bg-background p-1 shadow-[0_12px_40px_rgba(0,0,0,0.12)]"
+                  className="nav-dropdown absolute right-0 top-full z-50 mt-2 w-52 p-1"
                 >
-                  <ul className="flex flex-col gap-0.5">
-                    {[...site.nav, ...site.navMore].map((item) => (
+                  <ul className="flex flex-col">
+                    {navItems.map((item) => (
                       <li key={item.href}>
-                        <a href={item.href} className={`block w-full ${navClass}`}>
+                        <a
+                          href={item.href}
+                          className={`mobile-nav-link ${navClass}`}
+                          onClick={closeMobileMenu}
+                        >
                           {item.label}
                         </a>
                       </li>

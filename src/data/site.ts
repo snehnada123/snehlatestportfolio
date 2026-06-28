@@ -23,7 +23,7 @@ export const site = {
   home: {
     intro: "Hello world, I'm",
     paragraph:
-      "I build backend systems and AI tooling — interning at Destinova AI Labs, finishing IT at GCET. I learn by shipping: APIs, RAG pipelines, agents, and small projects that actually run on GitHub.",
+      "I'm someone who's really curious (bloody curious) about building things and making complex things simple by learning it through first principles. It just takes me an ignition to start a process and work upon it. Not everyone gets me :)",
     exploreLabel: 'View socials',
     projectsTitle: 'Projects',
     projectsHint: 'The projects that I actually build.',

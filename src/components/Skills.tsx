@@ -11,17 +11,17 @@ export function Skills() {
         <div className="flex max-w-2xl flex-col gap-3">
           <h2 className="text-title">Skills</h2>
           <p className="text-body text-muted">
-            Languages, infrastructure, and frameworks I use to build backend systems and AI
-            applications.
+            <span className="sm:hidden">Tools I build with.</span>
+            <span className="hidden sm:inline">
+              Languages, infrastructure, and frameworks I use to build backend systems and AI
+              applications.
+            </span>
           </p>
         </div>
 
-        <ul className="flex flex-wrap gap-2" aria-label="Skills">
+        <ul className="skill-list" aria-label="Skills">
           {skills.map((skill) => (
-            <li
-              key={skill}
-              className="text-mono text-caption border border-border px-3 py-1.5 text-muted"
-            >
+            <li key={skill} className="tag-pill tag-pill--skill">
               {skill}
             </li>
           ))}

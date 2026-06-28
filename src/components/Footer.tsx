@@ -77,12 +77,12 @@ export function Footer() {
       </div>
 
       <div className="border-t border-border">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-4 sm:px-6 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-4 sm:gap-2 sm:px-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-mono text-caption text-muted">
             © {year} {site.author}. All rights reserved.
           </p>
-          <p className="text-mono text-caption text-muted">
-            Built with React · Tailwind · Vite
+          <p className="footer-blessing text-mono text-caption text-muted">
+            Built with love and with the blessings of my mom (Nita)
           </p>
         </div>
       </div>

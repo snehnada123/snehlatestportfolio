@@ -43,13 +43,10 @@ export function FeaturedWork() {
                 {project.description}
               </p>
 
-              <div className="mt-auto flex flex-wrap items-center justify-between gap-3 pt-2">
+              <div className="mt-auto hidden flex-wrap items-center justify-between gap-3 pt-2 sm:flex">
                 <ul className="flex flex-wrap gap-2" aria-label="Tags">
                   {project.tags.slice(0, 3).map((tag) => (
-                    <li
-                      key={tag}
-                      className="text-mono text-caption border border-border px-2 py-0.5 text-muted whitespace-nowrap"
-                    >
+                    <li key={tag} className="tag-pill">
                       {tag}
                     </li>
                   ))}

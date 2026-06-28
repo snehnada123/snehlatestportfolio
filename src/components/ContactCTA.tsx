@@ -108,10 +108,13 @@ export function ContactCTA() {
       <div className="mx-auto max-w-6xl page-inner flex flex-col gap-6 sm:gap-10">
         <div className="flex max-w-2xl flex-col gap-3">
           <h2 className="text-title">{site.home.ctaTitle}</h2>
-          <p className="text-body text-muted leading-relaxed">{site.home.ctaBody}</p>
+          <p className="text-body text-muted leading-relaxed">
+            <span className="sm:hidden">Open to AI products, dev tools, and niche workflows.</span>
+            <span className="hidden sm:inline">{site.home.ctaBody}</span>
+          </p>
         </div>
 
-        <div className="grid min-w-0 gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
+        <div className="grid min-w-0 gap-8 sm:gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
           <div className="contact-form-shell min-w-0 flex flex-col gap-5 sm:gap-6">
             <h3 className="text-headline">
               <span className="text-terminal" aria-hidden="true">
@@ -227,7 +230,7 @@ export function ContactCTA() {
             )}
           </div>
 
-          <div className="contact-direct-shell min-w-0 flex flex-col gap-5 border-t border-border pt-8 sm:gap-6 lg:border-t-0 lg:pt-0">
+          <div className="contact-direct-shell min-w-0 flex flex-col gap-5 border-t border-border pt-6 sm:gap-6 sm:pt-8 lg:border-t-0 lg:pt-0">
             <h3 className="text-headline">
               <span className="text-terminal" aria-hidden="true">
                 →
@@ -235,7 +238,29 @@ export function ContactCTA() {
               or reach out directly
             </h3>
 
-            <ul className="flex flex-col gap-4">
+            <ul className="contact-direct-grid sm:hidden" aria-label="Direct contact links">
+              {directLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    target={link.external ? '_blank' : undefined}
+                    rel={link.external ? 'noopener noreferrer' : undefined}
+                    className="contact-direct-link"
+                  >
+                    {link.external ? (
+                      <ExternalLink className="h-4 w-4 shrink-0" aria-hidden="true" />
+                    ) : (
+                      <span className="text-terminal" aria-hidden="true">
+                        $
+                      </span>
+                    )}
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            <ul className="hidden flex-col gap-4 sm:flex" aria-label="Direct contact links">
               {directLinks.map((link) => (
                 <li key={link.label}>
                   <a
