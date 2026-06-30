@@ -23,13 +23,17 @@ export function ResumeButton() {
   }
 
   return (
-    <span className="inline-flex flex-col gap-1">
+    <span className="relative inline-flex flex-col gap-1">
       <button type="button" onClick={handleClick} className={linkClass}>
         <Download className="h-4 w-4" aria-hidden="true" />
         Download resume
       </button>
       {notice && (
-        <span className="text-mono text-caption text-muted" role="status" aria-live="polite">
+        <span
+          className="text-mono text-caption text-muted max-sm:absolute max-sm:top-full max-sm:left-0 max-sm:mt-1 max-sm:whitespace-nowrap"
+          role="status"
+          aria-live="polite"
+        >
           {notice}
         </span>
       )}

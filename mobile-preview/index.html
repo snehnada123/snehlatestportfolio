@@ -24,7 +24,7 @@
       }
 
       p {
-        margin: 0 0 1.5rem;
+        margin: 0 0 1rem;
         color: #a3a3a3;
         line-height: 1.5;
       }
@@ -49,7 +49,7 @@
       }
 
       .phone {
-        width: min(428px, 100%);
+        width: min(var(--phone-width, 428px), 100%);
         border: 1px solid #333;
         border-radius: 28px;
         overflow: hidden;
@@ -63,7 +63,8 @@
         height: auto;
       }
 
-      .live {
+      .live,
+      .devices {
         margin-top: 2rem;
         padding: 1rem 1.25rem;
         border: 1px solid #333;
@@ -72,55 +73,159 @@
         margin-inline: auto;
       }
 
-      .live a {
+      .live a,
+      .devices a {
         color: #a78bfa;
+      }
+
+      .device-list {
+        display: grid;
+        gap: 0.5rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .device-list a {
+        display: inline-flex;
+        gap: 0.5rem;
+        text-decoration: none;
+      }
+
+      .device-list span {
+        color: #737373;
       }
 
       iframe {
         display: block;
-        width: 428px;
-        max-width: 100%;
-        height: 926px;
+        width: min(var(--phone-width, 428px), 100%);
+        height: min(var(--phone-height, 926px), 80vh);
         border: 1px solid #333;
         border-radius: 28px;
         background: #0a0a0a;
+      }
+
+      select {
+        width: min(28rem, 100%);
+        padding: 0.625rem 0.75rem;
+        border: 1px solid #333;
+        border-radius: 8px;
+        background: #0a0a0a;
+        color: #fafafa;
       }
     </style>
   </head>
   <body>
     <div class="grid">
       <div>
-        <h1>Mobile preview — iPhone 13 Pro Max (428×926)</h1>
-        <p>Static captures from your local site. Scroll the live frame below to interact.</p>
+        <h1>Mobile preview — all smartphones</h1>
+        <p>
+          Pick any iPhone or Android size below. Screenshots use the selected device; the live frame
+          updates when you change the dropdown.
+        </p>
       </div>
 
       <figure>
         <figcaption>Hero</figcaption>
-        <div class="phone"><img src="./01-hero.png" alt="Mobile hero preview" /></div>
+        <div class="phone" id="phone-hero"><img src="./01-hero.png" alt="Mobile hero preview" /></div>
       </figure>
 
       <figure>
         <figcaption>Projects</figcaption>
-        <div class="phone"><img src="./02-projects.png" alt="Mobile projects preview" /></div>
+        <div class="phone" id="phone-projects"><img src="./02-projects.png" alt="Mobile projects preview" /></div>
       </figure>
 
       <figure>
         <figcaption>Contact</figcaption>
-        <div class="phone"><img src="./03-contact.png" alt="Mobile contact preview" /></div>
+        <div class="phone" id="phone-contact"><img src="./03-contact.png" alt="Mobile contact preview" /></div>
       </figure>
 
       <figure>
         <figcaption>Menu open</figcaption>
-        <div class="phone"><img src="./04-menu-open.png" alt="Mobile menu preview" /></div>
+        <div class="phone" id="phone-menu"><img src="./04-menu-open.png" alt="Mobile menu preview" /></div>
       </figure>
+    </div>
+
+    <div class="devices">
+      <h1>Choose a smartphone</h1>
+      <p>Open the live preview at the exact viewport for that phone.</p>
+      <label>
+        Device
+        <select id="device-select" aria-label="Choose smartphone"></select>
+      </label>
+      <ul class="device-list" id="device-links"></ul>
     </div>
 
     <div class="live">
       <h1>Live mobile frame</h1>
       <p>
-        Interactive preview of <a href="http://localhost:5173/" target="_blank" rel="noreferrer">http://localhost:5173/</a>
+        Interactive preview of
+        <a id="live-link" href="http://localhost:5173/?mobile=preview" target="_blank" rel="noreferrer"
+          >http://localhost:5173/?mobile=preview</a
+        >
       </p>
-      <iframe src="http://localhost:5173/" title="Live mobile portfolio preview"></iframe>
+      <iframe
+        id="live-frame"
+        src="http://localhost:5173/?mobile=preview&device=iphone-14-pro-max"
+        title="Live mobile portfolio preview"
+      ></iframe>
     </div>
+
+    <script type="module">
+      const devices = [
+        { id: 'iphone-se', name: 'iPhone SE', platform: 'iOS', width: 375, height: 667 },
+        { id: 'iphone-13', name: 'iPhone 13 / 14', platform: 'iOS', width: 390, height: 844 },
+        { id: 'iphone-14-pro-max', name: 'iPhone 14 Pro Max', platform: 'iOS', width: 428, height: 926 },
+        { id: 'iphone-15-pro-max', name: 'iPhone 15 Pro Max', platform: 'iOS', width: 430, height: 932 },
+        { id: 'pixel-7', name: 'Pixel 7', platform: 'Android', width: 412, height: 915 },
+        { id: 'pixel-8-pro', name: 'Pixel 8 Pro', platform: 'Android', width: 448, height: 998 },
+        { id: 'galaxy-s23', name: 'Galaxy S23', platform: 'Android', width: 360, height: 780 },
+        { id: 'galaxy-s24-ultra', name: 'Galaxy S24 Ultra', platform: 'Android', width: 412, height: 915 },
+        { id: 'galaxy-a54', name: 'Galaxy A54', platform: 'Android', width: 384, height: 854 },
+        { id: 'small-android', name: 'Small Android', platform: 'Android', width: 320, height: 640 },
+      ]
+
+      const select = document.getElementById('device-select')
+      const links = document.getElementById('device-links')
+      const frame = document.getElementById('live-frame')
+      const liveLink = document.getElementById('live-link')
+      const phones = document.querySelectorAll('.phone')
+
+      for (const device of devices) {
+        const option = document.createElement('option')
+        option.value = device.id
+        option.textContent = `${device.name} (${device.width}px · ${device.platform})`
+        select.appendChild(option)
+
+        const item = document.createElement('li')
+        const anchor = document.createElement('a')
+        anchor.href = `http://localhost:5173/?mobile=preview&device=${device.id}`
+        anchor.target = '_blank'
+        anchor.rel = 'noreferrer'
+        anchor.innerHTML = `${device.name} <span>${device.width}×${device.height} · ${device.platform}</span>`
+        item.appendChild(anchor)
+        links.appendChild(item)
+      }
+
+      function applyDevice(deviceId) {
+        const device = devices.find((item) => item.id === deviceId) ?? devices[2]
+        const url = `http://localhost:5173/?mobile=preview&device=${device.id}`
+        frame.src = url
+        frame.style.setProperty('--phone-width', `${device.width}px`)
+        frame.style.setProperty('--phone-height', `${device.height}px`)
+        frame.style.width = `min(${device.width}px, 100%)`
+        frame.style.height = `min(${device.height}px, 80vh)`
+        liveLink.href = url
+        liveLink.textContent = url
+        for (const phone of phones) {
+          phone.style.setProperty('--phone-width', `${device.width}px`)
+        }
+        select.value = device.id
+      }
+
+      const initial = new URLSearchParams(window.location.search).get('device') ?? 'iphone-14-pro-max'
+      applyDevice(initial)
+      select.addEventListener('change', () => applyDevice(select.value))
+    </script>
   </body>
 </html>

@@ -114,7 +114,7 @@ export function ContactCTA() {
           </p>
         </div>
 
-        <div className="grid min-w-0 gap-8 sm:gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
+        <div className="contact-layout grid min-w-0 grid-cols-1 gap-8 sm:gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
           <div className="contact-form-shell min-w-0 flex flex-col gap-5 sm:gap-6">
             <h3 className="text-headline">
               <span className="text-terminal" aria-hidden="true">
@@ -245,16 +245,21 @@ export function ContactCTA() {
                     href={link.href}
                     target={link.external ? '_blank' : undefined}
                     rel={link.external ? 'noopener noreferrer' : undefined}
-                    className="contact-direct-link"
+                    className="contact-direct-link flex-col items-start gap-1"
                   >
-                    {link.external ? (
-                      <ExternalLink className="h-4 w-4 shrink-0" aria-hidden="true" />
-                    ) : (
-                      <span className="text-terminal" aria-hidden="true">
-                        $
-                      </span>
-                    )}
-                    {link.label}
+                    <span className="inline-flex items-center gap-2">
+                      {link.external ? (
+                        <ExternalLink className="h-4 w-4 shrink-0" aria-hidden="true" />
+                      ) : (
+                        <span className="text-terminal" aria-hidden="true">
+                          $
+                        </span>
+                      )}
+                      {link.label}
+                    </span>
+                    <span className="text-mono text-[0.6875rem] text-foreground truncate max-w-full">
+                      {link.value}
+                    </span>
                   </a>
                 </li>
               ))}

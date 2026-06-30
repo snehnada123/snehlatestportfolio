@@ -31,9 +31,9 @@ export function Experience() {
 
               <p className="text-body text-muted max-w-3xl">{entry.description}</p>
 
-              <ul className="hidden flex-wrap gap-2 sm:flex" aria-label="Technologies">
+              <ul className="flex flex-wrap gap-1.5 sm:gap-2" aria-label="Technologies">
                 {entry.tags.map((tag) => (
-                  <li key={tag} className="tag-pill">
+                  <li key={tag} className="tag-pill max-sm:text-[0.625rem] max-sm:px-2 max-sm:py-0.5">
                     {tag}
                   </li>
                 ))}

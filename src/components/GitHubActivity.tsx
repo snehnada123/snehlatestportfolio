@@ -65,7 +65,11 @@ export function GitHubActivity() {
 
           {!loading && !error && weeks.length > 0 && (
             <>
-              <div className="overflow-x-auto pb-2">
+              <p className="mb-2 text-mono text-caption text-muted sm:hidden">
+                Swipe to see the full year →
+              </p>
+
+              <div className="github-heatmap-scroll overflow-x-auto pb-2 [-webkit-overflow-scrolling:touch]">
                 <div className="github-heatmap min-w-max">
                   <div className="github-heatmap__months" aria-hidden="true">
                     <span className="github-heatmap__spacer" />
@@ -141,14 +145,14 @@ export function GitHubActivity() {
                   className="flex items-center gap-1.5 text-mono text-caption text-muted sm:gap-2"
                   aria-label="Contribution intensity scale from less to more"
                 >
-                  <span className="hidden sm:inline">Less</span>
+                  <span>Less</span>
                   {[0, 1, 2, 3, 4].map((level) => (
                     <span
                       key={level}
                       className={`github-heatmap__cell github-heatmap__cell--level-${level}`}
                     />
                   ))}
-                  <span className="hidden sm:inline">More</span>
+                  <span>More</span>
                 </div>
               </div>
             </>

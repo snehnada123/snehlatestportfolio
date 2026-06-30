@@ -69,9 +69,14 @@ export function Header() {
                 <summary className="mobile-menu-btn">
                   Menu
                 </summary>
+                <div
+                  className="mobile-nav-backdrop fixed inset-0 z-40 bg-background/70 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-150 group-open:opacity-100 group-open:pointer-events-auto"
+                  onClick={closeMobileMenu}
+                  aria-hidden="true"
+                />
                 <nav
                   aria-label="Primary"
-                  className="nav-dropdown absolute right-0 top-full z-50 mt-2 w-52 p-1"
+                  className="mobile-nav-panel nav-dropdown z-50 p-1 shadow-lg"
                 >
                   <ul className="flex flex-col">
                     {navItems.map((item) => (

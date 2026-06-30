@@ -15,43 +15,46 @@ export function FeaturedWork() {
           <p className="text-body text-muted">{site.home.projectsHint}</p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2">
+        <div className="projects-grid grid grid-cols-1 gap-6 sm:grid-cols-2">
           {projects.map((project) => (
             <article
               key={project.id}
               id={project.id}
-              className="group relative flex flex-col gap-4 border border-border bg-background p-4 transition-colors hover:border-foreground focus-within:border-foreground sm:gap-5 sm:p-6"
+              className="group relative flex flex-col gap-4 overflow-hidden border border-border bg-background p-4 transition-colors hover:border-foreground focus-within:border-foreground sm:gap-5 sm:p-6"
             >
-              <div className="flex items-start justify-between gap-4">
-                <h3 className="text-headline transition-colors group-hover:text-foreground">
-                  <a
-                    href={project.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="outline-none after:absolute after:inset-0 after:content-['']"
-                  >
-                    {project.title}
-                  </a>
+              <a
+                href={project.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute inset-0 z-10 rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-terminal focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                aria-label={`View ${project.title} on GitHub`}
+              />
+
+              <div className="relative flex min-w-0 items-start justify-between gap-3">
+                <h3 className="min-w-0 flex-1 text-headline text-balance transition-colors group-hover:text-foreground">
+                  {project.title}
                 </h3>
-                <ArrowUpRight
-                  className="h-4 w-4 shrink-0 text-muted transition-all group-hover:text-terminal group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                <span
+                  className="flex h-8 w-8 shrink-0 items-center justify-center text-muted transition-colors group-hover:text-terminal"
                   aria-hidden="true"
-                />
+                >
+                  <ArrowUpRight className="h-4 w-4" />
+                </span>
               </div>
 
-              <p className="text-body text-muted line-clamp-3">
+              <p className="relative text-body text-muted line-clamp-3">
                 {project.description}
               </p>
 
-              <div className="mt-auto hidden flex-wrap items-center justify-between gap-3 pt-2 sm:flex">
-                <ul className="flex flex-wrap gap-2" aria-label="Tags">
+              <div className="relative mt-auto flex flex-wrap items-center justify-between gap-2 pt-2 sm:gap-3">
+                <ul className="flex flex-wrap gap-1.5 sm:gap-2" aria-label="Tags">
                   {project.tags.slice(0, 3).map((tag) => (
-                    <li key={tag} className="tag-pill">
+                    <li key={tag} className="tag-pill max-sm:text-[0.625rem] max-sm:px-2 max-sm:py-0.5">
                       {tag}
                     </li>
                   ))}
                 </ul>
-                <span className="text-mono text-caption text-muted">GitHub</span>
+                <span className="text-mono text-caption text-muted max-sm:hidden">GitHub</span>
               </div>
             </article>
           ))}

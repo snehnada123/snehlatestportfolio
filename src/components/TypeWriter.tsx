@@ -1,5 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import type { HeroQuote } from '../data/quotes'
+import { useCompactLayout } from '../hooks/useCompactLayout'
+
+const FULL_NAME = 'Sneh Nada'
 
 interface SimpleTypeWriterProps {
   text: string
@@ -62,7 +65,7 @@ interface NameTypeWriterProps {
   onComplete?: () => void
 }
 
-export function NameTypeWriter({ className = '', onComplete }: NameTypeWriterProps) {
+function InsertNameTypeWriter({ className = '', onComplete }: NameTypeWriterProps) {
   const [fullText, setFullText] = useState('')
   const [cursorPos, setCursorPos] = useState(0)
   const [phase, setPhase] = useState<'typing' | 'moving' | 'inserting' | 'done'>('typing')
@@ -141,6 +144,23 @@ export function NameTypeWriter({ className = '', onComplete }: NameTypeWriterPro
       {after}
     </span>
   )
+}
+
+export function NameTypeWriter({ className = '', onComplete }: NameTypeWriterProps) {
+  const compact = useCompactLayout()
+
+  if (compact) {
+    return (
+      <SimpleTypeWriter
+        text={FULL_NAME}
+        delay={90}
+        className={className}
+        onComplete={onComplete}
+      />
+    )
+  }
+
+  return <InsertNameTypeWriter className={className} onComplete={onComplete} />
 }
 
 interface QuoteTypeWriterProps {
