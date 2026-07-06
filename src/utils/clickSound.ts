@@ -54,15 +54,7 @@ export function warmupClickSound(): Promise<void> {
   return warmupPromise
 }
 
-export function playClickSound() {
-  const ctx = getAudioContext()
-  if (!ctx) return
-
-  if (ctx.state !== 'running') {
-    void warmupClickSound().then(() => playClickSound())
-    return
-  }
-
+function playBufferedClick(ctx: AudioContext) {
   if (!clickBuffer) {
     clickBuffer = createClickBuffer(ctx)
   }
@@ -71,4 +63,25 @@ export function playClickSound() {
   source.buffer = clickBuffer
   source.connect(ctx.destination)
   source.start(0)
+}
+
+export function playClickSoundFromUserGesture() {
+  const ctx = getAudioContext()
+  if (!ctx) return
+
+  if (ctx.state === 'running') {
+    playBufferedClick(ctx)
+    return
+  }
+
+  // resume() must be invoked synchronously inside the user gesture on mobile.
+  void ctx.resume().then(() => {
+    if (ctx.state === 'running') {
+      playBufferedClick(ctx)
+    }
+  })
+}
+
+export function playClickSound() {
+  playClickSoundFromUserGesture()
 }
