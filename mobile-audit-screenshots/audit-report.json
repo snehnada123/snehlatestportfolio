@@ -1,0 +1,179 @@
+{
+  "device": "iPhone 13 Pro Max",
+  "viewport": {
+    "width": 428,
+    "height": 926
+  },
+  "url": "http://localhost:5173/",
+  "hasPreviewShell": false,
+  "screenshots": {
+    "hero": "C:\\Users\\HP\\snehlatestportfolio\\mobile-audit-screenshots\\hero.png",
+    "header-menu-open": "C:\\Users\\HP\\snehlatestportfolio\\mobile-audit-screenshots\\header-menu-open.png",
+    "experience": "C:\\Users\\HP\\snehlatestportfolio\\mobile-audit-screenshots\\experience.png",
+    "education": "C:\\Users\\HP\\snehlatestportfolio\\mobile-audit-screenshots\\education.png",
+    "skills": "C:\\Users\\HP\\snehlatestportfolio\\mobile-audit-screenshots\\skills.png",
+    "projects": "C:\\Users\\HP\\snehlatestportfolio\\mobile-audit-screenshots\\projects.png",
+    "activity": "C:\\Users\\HP\\snehlatestportfolio\\mobile-audit-screenshots\\activity.png",
+    "contact": "C:\\Users\\HP\\snehlatestportfolio\\mobile-audit-screenshots\\contact.png",
+    "footer": "C:\\Users\\HP\\snehlatestportfolio\\mobile-audit-screenshots\\footer.png",
+    "full-page": "C:\\Users\\HP\\snehlatestportfolio\\mobile-audit-screenshots\\full-page.png"
+  },
+  "layoutAudit": [
+    {
+      "type": "hero-social-wrap-rows",
+      "rowCount": 2,
+      "childCount": 5
+    },
+    {
+      "type": "hero-quote",
+      "height": 52,
+      "minHeight": "52px",
+      "scrollHeight": 52,
+      "clientHeight": 52,
+      "overflow": false
+    },
+    {
+      "type": "experience-tags-visible",
+      "display": "none",
+      "visible": false
+    },
+    {
+      "type": "project-tags-count",
+      "count": 12
+    },
+    {
+      "type": "heatmap",
+      "heatmapWidth": 881,
+      "containerScrollWidth": 881,
+      "containerClientWidth": 370,
+      "needsScroll": true
+    },
+    {
+      "type": "contact-direct-grid",
+      "display": "grid",
+      "gridTemplateColumns": "190px 190px",
+      "childRects": [
+        {
+          "label": "$Email",
+          "width": 190,
+          "height": 44
+        },
+        {
+          "label": "GitHub",
+          "width": 190,
+          "height": 44
+        },
+        {
+          "label": "LinkedIn",
+          "width": 190,
+          "height": 44
+        },
+        {
+          "label": "X",
+          "width": 190,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "type": "education-schools",
+      "schools": [
+        {
+          "text": "G.H. Patel College of Engineering and Technology, Anand",
+          "height": 54,
+          "lineCount": 2
+        },
+        {
+          "text": "Allen Career Institute",
+          "height": 27,
+          "lineCount": 1
+        },
+        {
+          "text": "Radiant English Academy",
+          "height": 27,
+          "lineCount": 1
+        }
+      ]
+    },
+    {
+      "type": "footer-nav-visible",
+      "display": "none"
+    },
+    {
+      "type": "footer-blessing",
+      "textAlign": "start",
+      "maxWidth": "320px",
+      "rect": {
+        "x": 16,
+        "y": 4143.15625,
+        "width": 320,
+        "height": 36,
+        "top": 4143.15625,
+        "right": 336,
+        "bottom": 4179.15625,
+        "left": 16
+      }
+    },
+    {
+      "type": "mobile-menu-closed",
+      "dropdownDisplay": "block"
+    },
+    {
+      "type": "menu-dropdown-position",
+      "top": 56,
+      "right": 16,
+      "width": 208,
+      "height": 290,
+      "zIndex": "50",
+      "headerBottom": 61,
+      "clippedRight": false,
+      "clippedLeft": false,
+      "clippedTop": true
+    },
+    {
+      "type": "menu-links",
+      "links": [
+        {
+          "text": "HOME",
+          "height": 40,
+          "width": 198
+        },
+        {
+          "text": "PROJECTS",
+          "height": 40,
+          "width": 198
+        },
+        {
+          "text": "EXPERIENCE",
+          "height": 40,
+          "width": 198
+        },
+        {
+          "text": "EDUCATION",
+          "height": 40,
+          "width": 198
+        },
+        {
+          "text": "SKILLS",
+          "height": 40,
+          "width": 198
+        },
+        {
+          "text": "ACTIVITY",
+          "height": 40,
+          "width": 198
+        },
+        {
+          "text": "CONTACT",
+          "height": 40,
+          "width": 198
+        }
+      ]
+    },
+    {
+      "type": "menu-button-open-style",
+      "bg": "rgb(10, 10, 10)",
+      "color": "rgb(250, 250, 250)"
+    }
+  ]
+}
