@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { isClickSoundEnabled } from './useClickSoundPreference'
 import {
   playClickSoundFromUserGesture,
   unlockClickSound,
@@ -15,6 +16,8 @@ export function useClickSound() {
     const touchDevice = isTouchDevice()
 
     const handleUserGesture = (event: Event) => {
+      if (touchDevice && !isClickSoundEnabled()) return
+
       if (
         !touchDevice &&
         event instanceof PointerEvent &&

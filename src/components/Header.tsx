@@ -1,4 +1,5 @@
 import { site } from '../data/site'
+import { SoundToggle } from './SoundToggle'
 import { ThemeToggle } from './ThemeToggle'
 
 const navClass =
@@ -33,6 +34,7 @@ export function Header() {
             </a>
 
             <div className="flex items-center gap-2 sm:gap-3">
+              <SoundToggle />
               <ThemeToggle />
 
               <nav aria-label="Primary" className="hidden md:block">
