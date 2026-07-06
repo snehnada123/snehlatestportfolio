@@ -1,8 +1,7 @@
-import { ArrowDown, ArrowRight, ExternalLink } from 'lucide-react'
+import { ArrowDown, ExternalLink } from 'lucide-react'
 import { useState } from 'react'
 import { heroQuotes } from '../data/quotes'
 import { site } from '../data/site'
-import { useCompactLayout } from '../hooks/useCompactLayout'
 import { ResumeButton } from './ResumeButton'
 import { TimeOnEarth } from './TimeOnEarth'
 import { NameTypeWriter, QuoteTypeWriter, SimpleTypeWriter } from './TypeWriter'
@@ -10,9 +9,14 @@ import { NameTypeWriter, QuoteTypeWriter, SimpleTypeWriter } from './TypeWriter'
 const socialLinkClass =
   'text-mono text-small text-muted transition-colors hover:text-foreground'
 
+const socialLinks = [
+  { label: 'GitHub', href: site.links.github },
+  { label: 'LinkedIn', href: site.links.linkedin },
+  { label: 'X', href: site.links.x },
+] as const
+
 export function Hero() {
   const [nameDone, setNameDone] = useState(false)
-  const compactLayout = useCompactLayout()
 
   return (
     <section
@@ -36,53 +40,35 @@ export function Hero() {
         </p>
 
         <div className="flex flex-col gap-4 sm:gap-5">
-          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6 sm:gap-y-3">
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 sm:contents">
+          <div className="flex flex-col gap-3 sm:gap-4">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 sm:gap-x-6">
               <a
                 href="#contact"
                 className="inline-flex items-center gap-2 text-mono text-small font-medium text-foreground underline underline-offset-4 decoration-1 hover:text-terminal transition-colors"
               >
                 {site.home.exploreLabel}
-                {compactLayout ? (
-                  <ArrowDown className="h-4 w-4" aria-hidden="true" />
-                ) : (
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                )}
+                <ArrowDown className="h-4 w-4" aria-hidden="true" />
               </a>
 
               <ResumeButton />
             </div>
 
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-border pt-3 sm:contents sm:border-0 sm:pt-0">
-              <a
-                href={site.links.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${socialLinkClass} inline-flex items-center gap-2 font-medium text-foreground underline underline-offset-4 decoration-1 hover:text-terminal`}
-              >
-                <ExternalLink className="h-4 w-4" aria-hidden="true" />
-                GitHub
-              </a>
-
-              <a
-                href={site.links.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${socialLinkClass} inline-flex items-center gap-2 font-medium text-foreground underline underline-offset-4 decoration-1 hover:text-terminal`}
-              >
-                <ExternalLink className="h-4 w-4" aria-hidden="true" />
-                LinkedIn
-              </a>
-
-              <a
-                href={site.links.x}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${socialLinkClass} inline-flex items-center gap-2 font-medium text-foreground underline underline-offset-4 decoration-1 hover:text-terminal`}
-              >
-                <ExternalLink className="h-4 w-4" aria-hidden="true" />
-                X
-              </a>
+            <div
+              className="flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-border pt-3 sm:border-t-0 sm:pt-0"
+              aria-label="Social links"
+            >
+              {socialLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${socialLinkClass} inline-flex items-center gap-2 font-medium text-foreground underline underline-offset-4 decoration-1 hover:text-terminal`}
+                >
+                  <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                  {link.label}
+                </a>
+              ))}
             </div>
           </div>
 
